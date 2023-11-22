@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  let [display, setDisplay] = useState("none")
+  let [display2, setDisplay2] = useState("none")
+  let [warning, setWarning] = useState("")
+  function clickText() {
+    setDisplay(display == "none" ? "block" : "none")
+  }
+  function warningClick() {
+    setWarning("red")
+    alert("Warning")
+  }
+  function clickText1() {
+    setDisplay2(display2 == "none" ? "block" : "none")
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button className='text' onClick={clickText}>Text</button>
+      <button className={warning} onClick={warningClick}>Warning message</button>
+      <button className='hint' onMouseEnter={clickText1} onMouseLeave={clickText1}>hint</button>
+      <p className={display}>Text </p>
+      <p className={display2}> ERROR </p>
     </div>
   );
 }
